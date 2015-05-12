@@ -1,4 +1,4 @@
-# PostgreSQL ready to run docker image (ZODB RelStorage)
+# PostgreSQL ready to run docker image (ZODB RelStorage ready)
 
 Docker images created to be used within EEA main portal and optimized to work
 with ZODB RelStorage.
