@@ -89,16 +89,19 @@ The data container can also be easily
 ### Restore PostgreSQL database from backup
 
 **WARNING:**
-- **NEVER do this directly on production**
-- **Make sure you're restoring your backup within an empty PostgreSQL database.
-  For this you can either remove existing docker data container or manually
-  add the database using createdb utility**
 
-    $ cd eea.docker.postgres
-    $ cp /path/to/my/backups/datafs.gz backup/
-    $ docker-compose up -d
-    $ docker exec -it eeadockerpostgres_postgres_1 \
-      sh -c "gunzip -c /postgresql.backup/datafs.gz | psql -U plone datafs"
+- **NEVER do this directly on PRODUCTION**
+- Make sure you're restoring your backup within **an empty PostgreSQL database**.
+  For this you can either remove existing docker data container
+  **docker-compose rm -v data**
+  or manually add the database using createdb utility
+
+
+      $ cd eea.docker.postgres
+      $ cp /path/to/my/backups/datafs.gz backup/
+      $ docker-compose up -d
+      $ docker exec -it eeadockerpostgres_postgres_1 \
+        sh -c "gunzip -c /postgresql.backup/datafs.gz | psql -U plone datafs"
 
 
 <a name="env"></a>
