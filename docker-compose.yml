@@ -10,7 +10,7 @@ postgres:
 
 data:
   build: data
-  user: 999
+  user: "999"
   volumes:
     - /var/lib/postgresql/data
     - conf.d/:/postgresql.conf.d/
