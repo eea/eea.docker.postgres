@@ -19,6 +19,10 @@ your non-related EEA projects.
 
   - [github.com](http://github.com/eea/eea.docker.postgres)
 
+## Changelog
+
+  - [CHANGELOG.md](https://github.com/eea/eea.docker.postgres/blob/master/CHANGELOG.md)
+
 ## Installation
 
 1. Install [Docker](https://www.docker.com/).
