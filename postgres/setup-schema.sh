@@ -17,14 +17,12 @@ fi
 
 if [ ! -z "$INITDB" ]; then
 
-echo "****** CREATING $POSTGRES_DBNAME DATABASE ******"
-
-gosu postgres postgres --single <<- EOSQL
+  gosu postgres psql -q <<-EOF
 CREATE USER $POSTGRES_DBUSER WITH PASSWORD '$POSTGRES_DBPASS';
-CREATE DATABASE $POSTGRES_DBNAME WITH OWNER $POSTGRES_DBUSER;
-EOSQL
+EOF
 
-echo ""
-echo "****** DATABASE $POSTGRES_DBNAME CREATED ******"
+  for db in $POSTGRES_DBNAME; do
+    gosu postgres createdb -O $POSTGRES_DBUSER $db
+  done
 
 fi

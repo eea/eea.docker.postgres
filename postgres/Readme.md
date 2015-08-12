@@ -3,7 +3,7 @@
 Docker images created to be used within EEA main portal and optimized to work
 with ZODB RelStorage.
 
-These images are generic, thus you can obviously re-use them within
+This image is generic, thus you can obviously re-use it within
 your non-related EEA projects.
 
 ## Supported tags and respective Dockerfile links
@@ -57,7 +57,8 @@ within data container. See section [Restore existing database](#restore)
 ## Upgrade
 
     $ sudo docker-compose pull
-    $ sudo docker-compose restart
+    $ sudo docker-compose rm -v postgres
+    $ sudo docker-compose up --no-recreate
 
 
 ## Persistent data as you wish
@@ -83,7 +84,7 @@ The data container can also be easily
     $ cd eea.docker.postgres
     $ docker-compose up -d
     $ docker exec -it eeadockerpostgres_postgres_1 \
-      sh -c "pg_dump -U plone datafs | gzip > /postgresql.backup/datafs.gz"
+      sh -c "pg_dump -U zope datafs | gzip > /postgresql.backup/datafs.gz"
     $ ls backup/
 
 ### Restore PostgreSQL database from backup
@@ -101,7 +102,7 @@ The data container can also be easily
       $ cp /path/to/my/backups/datafs.gz backup/
       $ docker-compose up -d
       $ docker exec -it eeadockerpostgres_postgres_1 \
-        sh -c "gunzip -c /postgresql.backup/datafs.gz | psql -U plone datafs"
+        sh -c "gunzip -c /postgresql.backup/datafs.gz | psql -U zope datafs"
 
 
 <a name="env"></a>
@@ -118,7 +119,8 @@ The data container can also be easily
   the PostgreSQL image. This environment variable sets the superuser password
   for PostgreSQL. The default superuser is defined by the POSTGRES_USER
   environment variable. Default `postgres`
-* `POSTGRES_DBNAME` Create user database within PostgreSQL with `POSTGRES_DBUSER` as owner
+* `POSTGRES_DBNAME` Create multiple databases (space separated) within PostgreSQL with `POSTGRES_DBUSER` as owner.
+  E.g. POSTGRES_DBNAME=datafs zasync
 * `POSTGRES_DBUSER` Owner for `POSTGRES_DBNAME`
 * `POSTGRES_DBPASS` Password for `POSTGRES_DBUSER`
 

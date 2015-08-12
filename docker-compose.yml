@@ -1,17 +1,16 @@
 postgres:
-  restart: always
   image: eeacms/postgres
   ports:
-    - "5432:5432"
+  - "5432:5432"
   volumes_from:
-    - data
+  - data
   env_file:
-    - postgres.env
+  - postgres.env
 
 data:
-  build: data
-  user: "999"
+  image: busybox
   volumes:
-    - /var/lib/postgresql/data
-    - conf.d/:/postgresql.conf.d/
-    - backup/:/postgresql.backup/
+  - /var/lib/postgresql/data
+  - conf.d/:/postgresql.conf.d/
+  - backup/:/postgresql.backup/
+  command: chown -R 999:999 /var/lib/postgresql/data
