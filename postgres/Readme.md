@@ -128,6 +128,15 @@ The data container can also be easily
 * `POSTGRES_DBUSER` Owner for `POSTGRES_DBNAME`
 * `POSTGRES_DBPASS` Password for `POSTGRES_DBUSER`
 
+You can also override postgres configuration via environment variables by using
+`POSTGRES_CONFIG_` prefix. Example:
+
+    POSTGRES_CONFIG_MAX_CONNECTIONS=200
+    POSTGRES_CONFIG_SHARED_BUFFERS=4GB
+
+See [PostgreSQL Documentation](http://www.postgresql.org/docs/9.4/static/runtime-config.html) for supported parameters.
+You should also check [Tuning Your PostgreSQL Server](https://wiki.postgresql.org/wiki/Tuning_Your_PostgreSQL_Server)
+
 
 ## Copyright and license
 
