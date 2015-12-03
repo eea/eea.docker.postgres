@@ -11,6 +11,6 @@ data:
   image: busybox
   volumes:
   - /var/lib/postgresql/data
-  - conf.d/:/postgresql.conf.d/
-  - backup/:/postgresql.backup/
+  - ./conf.d/:/postgresql.conf.d/
+  - ./backup/postgresql.backup/
   command: chown -R 999:999 /var/lib/postgresql/data
