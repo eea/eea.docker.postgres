@@ -22,5 +22,3 @@ USER postgres
 
 ENTRYPOINT ["/usr/local/bin/chaperone"]
 CMD ["--user", "postgres"]
-
-
