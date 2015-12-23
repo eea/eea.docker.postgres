@@ -17,6 +17,5 @@ data:
   stdin_open: true
   volumes:
   - /var/lib/postgresql/data
-  - /logs
   - ./backup:/postgresql.backup:ro
-  command: sh -c "chown -v -R 999:999 /var/lib/postgresql/data >> /logs/chown.log && exec tail -f /logs/chown.log"
+  command: ["chown", "-v", "-R", "999:999", "/var/lib/postgresql/data"]
