@@ -1,16 +1,23 @@
 postgres:
-  image: eeacms/postgres
+#  image: eeacms/postgres
+  build: postgres
   ports:
   - "5432:5432"
   volumes_from:
   - data
-  env_file:
-  - postgres.env
+  environment:
+    POSTGRES_USER: postgres
+    POSTGRES_PASSWORD: postgres
+    POSTGRES_DBNAME: datafs zasync
+    POSTGRES_DBUSER: zope
+    POSTGRES_DBPASS: zope
 
 data:
   image: busybox
+  tty: true
+  stdin_open: true
   volumes:
   - /var/lib/postgresql/data
-  - ./conf.d:/postgresql.conf.d:z
-  - ./backup:/postgresql.backup:z
-  command: chown -R 999:999 /var/lib/postgresql/data
+  - /logs
+  - ./backup:/postgresql.backup:ro
+  command: sh -c "chown -v -R 999:999 /var/lib/postgresql/data >> /logs/chown.log && exec tail -f /logs/chown.log"

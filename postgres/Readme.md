@@ -34,25 +34,8 @@ your non-related EEA projects.
     $ git clone https://github.com/eea/eea.docker.postgres.git
     $ cd eea.docker.postgres
 
-Customize your deployment by changing environment variables
-within `postgres.env` file.
-See [Supported environment variables](#env) section bellow
-
-    $ vi postgres.env
-
-Also tuneup PostgresSQL server within `conf.d/relstorage.conf` or you can
-add your own configuration file within conf.d directory as long as it's
-name ends with `.conf`
-
-    $ vi conf.d/relstorage.conf
-
-Start
-
-    $ docker-compose up -d
-
-Check logs
-
-    $ docker-compose logs
+Customize your deployment by changing environment variables. 
+See [Supported environment variables](#env) section bellow.
 
 **You may want to restore existing PostgreSQL database**,
 within data container. See section [Restore existing database](#restore)
@@ -111,9 +94,6 @@ The data container can also be easily
 
 <a name="env"></a>
 ## Supported environment variables
-
-
-### postgres.env ###
 
 * `POSTGRES_USER` This optional environment variable is used in conjunction
    with POSTGRES_PASSWORD to set a user and its password. This variable will
