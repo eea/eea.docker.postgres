@@ -17,5 +17,5 @@ data:
   stdin_open: true
   volumes:
   - /var/lib/postgresql/data
-  - ./backup:/postgresql.backup:ro
+  - ./backup:/postgresql.backup:z
   command: ["chown", "-v", "-R", "999:999", "/var/lib/postgresql/data"]
