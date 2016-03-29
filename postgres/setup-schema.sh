@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 
 INITDB="yes"
 
@@ -16,11 +17,11 @@ fi
 
 if [ ! -z "$INITDB" ]; then
 
-  psql -q <<-EOF
+  gosu postgres psql -q <<-EOF
 CREATE USER $POSTGRES_DBUSER WITH PASSWORD '$POSTGRES_DBPASS';
 EOF
 
   for db in $POSTGRES_DBNAME; do
-    createdb -O $POSTGRES_DBUSER $db
+    gosu postgres createdb -O $POSTGRES_DBUSER $db
   done
 fi
