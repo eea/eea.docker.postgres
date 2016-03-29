@@ -8,8 +8,9 @@ your non-related EEA projects.
 
 ## Supported tags and respective Dockerfile links
 
-  - `:latest` (default)
-  - `:9.4`
+  - `:latest` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/master/postgres/Dockerfile) (default)
+  - `:9.5` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.5/postgres/Dockerfile)
+  - `:9.4` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.4/postgres/Dockerfile)
 
 ## Base docker image
 
@@ -114,7 +115,7 @@ You can also override postgres configuration via environment variables by using
     POSTGRES_CONFIG_MAX_CONNECTIONS=200
     POSTGRES_CONFIG_SHARED_BUFFERS=4GB
 
-See [PostgreSQL Documentation](http://www.postgresql.org/docs/9.4/static/runtime-config.html) for supported parameters.
+See [PostgreSQL Documentation](http://www.postgresql.org/docs/9.5/static/runtime-config.html) for supported parameters.
 You should also check [Tuning Your PostgreSQL Server](https://wiki.postgresql.org/wiki/Tuning_Your_PostgreSQL_Server)
 
 
