@@ -86,7 +86,7 @@ Start replica:
 or using docker-compose:
 
     master:
-      image: postgres:dev
+      image: eeacms/postgres
       environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
@@ -101,7 +101,7 @@ or using docker-compose:
       - master_data:/var/lib/postgresql/data
 
     replica:
-      image: postgres:dev
+      image: eeacms/postgres
       tty: true
       stdin_open: true
       links:
