@@ -15,6 +15,10 @@ if [ -z "$POSTGRES_DBPASS" ]; then
   INITDB=""
 fi
 
+if [ ! -z "$POSTGRES_REPLICATE_FROM" ]; then
+  INITDB=""
+fi
+
 if [ ! -z "$INITDB" ]; then
 
   gosu postgres psql -q <<-EOF

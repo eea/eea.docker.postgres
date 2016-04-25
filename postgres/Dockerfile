@@ -1,8 +1,10 @@
 FROM postgres:9.5
-MAINTAINER "Alin Voinea" <alin.voinea@eaudeweb.ro>
+MAINTAINER "EEA: IDM2 A-Team" <eea-edw-a-team-alerts@googlegroups.com>
 
-RUN mkdir -p /postgresql.conf.d
-ADD setup-env.py /bin/
-ADD setup-postgres.sh /docker-entrypoint-initdb.d/
-ADD setup-schema.sh /docker-entrypoint-initdb.d/
-ADD default.conf /postgresql.conf.d/
+RUN mkdir -p /postgresql.conf.d \
+ && mv /docker-entrypoint.sh /master-entrypoint.sh
+
+COPY replica-entrypoint.sh /docker-entrypoint.sh /
+COPY setup-env.py /bin/
+COPY setup-*.sh /docker-entrypoint-initdb.d/
+COPY default.conf /postgresql.conf.d/

@@ -1,7 +1,6 @@
-# PostgreSQL ready to run docker image (ZODB RelStorage ready)
+# PostgreSQL with replication support (ZODB RelStorage ready)
 
-Docker images created to be used within EEA main portal and optimized to work
-with ZODB RelStorage.
+Docker image for PostgreSQL with replication support and ZODB RelStorage ready
 
 This image is generic, thus you can obviously re-use it within
 your non-related EEA projects.
@@ -30,23 +29,99 @@ your non-related EEA projects.
 
 2. Install [Docker Compose](https://docs.docker.com/compose/).
 
-## Usage
+## Simple usage
 
-    $ git clone https://github.com/eea/eea.docker.postgres.git
-    $ cd eea.docker.postgres
+    $ docker run --name=pg1 \
+                 -e POSTGRES_USER=postgres \
+                 -e POSTGRES_PASSWORD=postgres \
+                 -e POSTGRES_DBNAME=datafs zasync \
+                 -e POSTGRES_DBUSER=zope \
+                 -e POSTGRES_DBPASS=zope \
+             eeacms/postgres
 
-Customize your deployment by changing environment variables. 
+Or using docker-compose:
+
+    postgres:
+      image: eeacms/postgres:9.5
+      ports:
+      - "5432:5432"
+      environment:
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: postgres
+        POSTGRES_DBNAME: datafs zasync
+        POSTGRES_DBUSER: zope
+        POSTGRES_DBPASS: zope
+      volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+## PostgreSQL replication
+
+Start master node:
+
+    $ docker run --name=master \
+                 -e POSTGRES_USER=postgres \
+                 -e POSTGRES_PASSWORD=postgres \
+                 -e POSTGRES_DBNAME=datafs zasync \
+                 -e POSTGRES_DBUSER=zope \
+                 -e POSTGRES_DBPASS=zope \
+                 -e POSTGRES_CONFIG_wal_level=hot_standby \
+                 -e POSTGRES_CONFIG_max_wal_senders=8 \
+                 -e POSTGRES_CONFIG_wal_keep_segments=8 \
+                 -e POSTGRES_CONFIG_hot_standby=on \
+            eeacms/postgres
+
+Start replica:
+
+    $ docker run --name=replica1 \
+                 --link=master \
+                 -e POSTGRES_REPLICATE_FROM=master \
+                 -e POSTGRES_USER=postgres \
+                 -e POSTGRES_PASSWORD=postgres \
+                 -e POSTGRES_CONFIG_wal_level=hot_standby \
+                 -e POSTGRES_CONFIG_max_wal_senders=8 \
+                 -e POSTGRES_CONFIG_wal_keep_segments=8 \
+                 -e POSTGRES_CONFIG_hot_standby=on \
+        eeacms/postgres
+
+or using docker-compose:
+
+    master:
+      image: postgres:dev
+      environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DBNAME=datafs zasync
+      - POSTGRES_DBUSER=zope
+      - POSTGRES_DBPASS=zope
+      - POSTGRES_CONFIG_wal_level=hot_standby
+      - POSTGRES_CONFIG_max_wal_senders=8
+      - POSTGRES_CONFIG_wal_keep_segments=8
+      - POSTGRES_CONFIG_hot_standby=on
+      volumes:
+      - master_data:/var/lib/postgresql/data
+
+    replica:
+      image: postgres:dev
+      tty: true
+      stdin_open: true
+      links:
+      - master
+      environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_CONFIG_wal_level=hot_standby
+      - POSTGRES_CONFIG_max_wal_senders=8
+      - POSTGRES_CONFIG_wal_keep_segments=8
+      - POSTGRES_CONFIG_hot_standby=on
+      - POSTGRES_REPLICATE_FROM=master
+      volumes:
+      - replica_data:/var/lib/postgresql/data
+
+Customize your deployment by changing environment variables.
 See [Supported environment variables](#env) section bellow.
 
 **You may want to restore existing PostgreSQL database**,
 within data container. See section [Restore existing database](#restore)
-
-
-## Upgrade
-
-    $ sudo docker-compose pull
-    $ sudo docker-compose rm -v postgres
-    $ sudo docker-compose up --no-recreate
 
 
 ## Persistent data as you wish
@@ -55,7 +130,7 @@ The PostgreSQL database is kept in a
 named *data*. The data container keeps the persistent data for a production environment and
 [must be backed up](https://github.com/paimpozhil/docker-volume-backup).
 
-So if you are running in a devel environment, you can skip the backup and delete
+So if you are running in a development environment, you can skip the backup and delete
 the container if you want.
 
 On a production environment you would probably want to backup the container at regular intervals.
@@ -108,6 +183,7 @@ The data container can also be easily
   E.g. POSTGRES_DBNAME=datafs zasync
 * `POSTGRES_DBUSER` Owner for `POSTGRES_DBNAME`
 * `POSTGRES_DBPASS` Password for `POSTGRES_DBUSER`
+* `POSTGRES_REPLICATE_FROM` Start a PostgreSQL replica of the given master
 
 You can also override postgres configuration via environment variables by using
 `POSTGRES_CONFIG_` prefix. Example:
