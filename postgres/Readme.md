@@ -155,17 +155,13 @@ The data container can also be easily
 
 **WARNING:**
 
-- **NEVER do this directly on PRODUCTION**
-- Make sure you're restoring your backup within **an empty PostgreSQL database**.
-  For this you can either remove existing docker data container
-  **docker-compose rm -v data**
-  or manually add the database using createdb utility
-
+- **NEVER do this directly on PRODUCTION. This will DROP your existing database**
 
       $ cd eea.docker.postgres
       $ cp /path/to/my/backups/datafs.gz backup/
       $ docker-compose up -d
-      $ docker exec eeadockerpostgres_postgres_1 /postgresql.restore/database-restore.sh datafs
+      $ docker exec eeadockerpostgres_postgres_1 \
+               gosu postgres /postgresql.restore/database-restore.sh datafs
 
 <a name="env"></a>
 ## Supported environment variables
@@ -194,9 +190,9 @@ See [PostgreSQL Documentation](http://www.postgresql.org/docs/9.5/static/runtime
 You should also check [Tuning Your PostgreSQL Server](https://wiki.postgresql.org/wiki/Tuning_Your_PostgreSQL_Server)
 
 In the same way you can define maintenance cron jobs by using
-`POSTGRES_CRON_` prefix: Example:
+`POSTGRES_CRON_` prefix. Example to backup nighly `datafs` database at 3 AM:
 
-    POSTGRES_CRON_1=0 0 * * * postgres pg_dump database | gzip > /postgresql.backup/database.gz
+    POSTGRES_CRON_1=0 3 * * * postgres bash -c "pg_dump datafs | gzip > /postgresql.backup/datafs.gz"
 
 ## Copyright and license
 
