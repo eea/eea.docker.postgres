@@ -1,5 +1,10 @@
 # Changelog
 
+## 2016-04-29
+
+- Add possibility to define cron jobs using `POSTGRES_CRON_*` env variables
+- Add basic support for replication via `POSTGRES_REPLICATE_FROM` env variable
+
 ## 2016-03-29
 
 - Drop chaperone process manager
@@ -15,7 +20,7 @@
 ## 2015-08-12
 
 - Add support for multiple user databases init on first run
-  (e.g. POSTGRES_DBNAME=datafs zasync)
+  (e.g. `POSTGRES_DBNAME=datafs zasync`)
 
 ## 2015-07-10
 
