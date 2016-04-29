@@ -4,6 +4,7 @@
 
 - Add possibility to define cron jobs using `POSTGRES_CRON_*` env variables
 - Add basic support for replication via `POSTGRES_REPLICATE_FROM` env variable
+- Add script to easily restore database from `pg_dump gzip archive`
 
 ## 2016-03-29
 

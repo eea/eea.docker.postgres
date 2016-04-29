@@ -165,9 +165,7 @@ The data container can also be easily
       $ cd eea.docker.postgres
       $ cp /path/to/my/backups/datafs.gz backup/
       $ docker-compose up -d
-      $ docker exec -it eeadockerpostgres_postgres_1 \
-        sh -c "gunzip -c /postgresql.backup/datafs.gz | psql -U zope datafs"
-
+      $ docker exec eeadockerpostgres_postgres_1 /postgresql.restore/database-restore.sh datafs
 
 <a name="env"></a>
 ## Supported environment variables
