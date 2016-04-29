@@ -194,6 +194,10 @@ You can also override postgres configuration via environment variables by using
 See [PostgreSQL Documentation](http://www.postgresql.org/docs/9.5/static/runtime-config.html) for supported parameters.
 You should also check [Tuning Your PostgreSQL Server](https://wiki.postgresql.org/wiki/Tuning_Your_PostgreSQL_Server)
 
+In the same way you can define maintenance cron jobs by using
+`POSTGRES_CRON_` prefix: Example:
+
+    POSTGRES_CRON_1=0 0 * * * postgres pg_dump database | gzip > /postgresql.backup/database.gz
 
 ## Copyright and license
 

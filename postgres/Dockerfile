@@ -5,6 +5,6 @@ RUN mkdir -p /postgresql.conf.d \
  && mv /docker-entrypoint.sh /master-entrypoint.sh
 
 COPY replica-entrypoint.sh /docker-entrypoint.sh /
-COPY setup-env.py /bin/
+COPY crond.sh setup-env.py /bin/
 COPY setup-*.sh /docker-entrypoint-initdb.d/
 COPY default.conf /postgresql.conf.d/
