@@ -18,10 +18,11 @@ psql -q <<-EOF
   update pg_database set datallowconn = 'false' where datname = '$DB';
   SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = '$DB';
   DROP DATABASE $DB;
+  CREATE DATABASE $DB WITH OWNER $USER;
+  update pg_database set datallowconn = 'false' where datname = '$DB';
 EOF
 
 # Re-import database from gzip
-createdb $DB -O $USER
 bash -c "gunzip -c /postgresql.backup/$DB.gz | psql $DB"
 
 # Allow connections to database
