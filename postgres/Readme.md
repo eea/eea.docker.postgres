@@ -154,14 +154,13 @@ The data container can also be easily
 ### Restore PostgreSQL database from backup
 
 **WARNING:**
+**NEVER do this directly on PRODUCTION. This will DROP your existing database**
 
-- **NEVER do this directly on PRODUCTION. This will DROP your existing database**
-
-      $ cd eea.docker.postgres
-      $ cp /path/to/my/backups/datafs.gz backup/
-      $ docker-compose up -d
-      $ docker exec eeadockerpostgres_postgres_1 \
-               gosu postgres /postgresql.restore/database-restore.sh datafs
+    $ cd eea.docker.postgres
+    $ cp /path/to/my/backups/datafs.gz backup/
+    $ docker-compose up -d
+    $ docker exec eeadockerpostgres_postgres_1 \
+             gosu postgres /postgresql.restore/database-restore.sh datafs
 
 <a name="env"></a>
 ## Supported environment variables
