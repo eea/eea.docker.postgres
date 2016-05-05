@@ -19,7 +19,6 @@ psql -q <<-EOF
   SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = '$DB';
   DROP DATABASE $DB;
   CREATE DATABASE $DB WITH OWNER $USER;
-  update pg_database set datallowconn = 'false' where datname = '$DB';
 EOF
 
 # Re-import database from gzip
