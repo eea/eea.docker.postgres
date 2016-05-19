@@ -1,5 +1,5 @@
 postgres:
-  image: eeacms/postgres:9.5
+  image: eeacms/postgres
   ports:
   - "5432:5432"
   volumes_from:
