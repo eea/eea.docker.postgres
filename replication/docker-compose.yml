@@ -16,7 +16,7 @@ replica:
   tty: true
   stdin_open: true
   links:
-  - master
+  - master:db-pg-master
   environment:
   - POSTGRES_USER=postgres
   - POSTGRES_PASSWORD=postgres
@@ -24,4 +24,4 @@ replica:
   - POSTGRES_CONFIG_max_wal_senders=8
   - POSTGRES_CONFIG_wal_keep_segments=8
   - POSTGRES_CONFIG_hot_standby=on
-  - POSTGRES_REPLICATE_FROM=master
+  - POSTGRES_REPLICATE_FROM=db-pg-master

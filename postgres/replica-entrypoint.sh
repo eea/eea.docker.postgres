@@ -15,19 +15,17 @@ if [ "$1" = 'postgres' ]; then
 
 	# look specifically for PG_VERSION, as it is expected in the DB dir
 	if [ ! -s "$PGDATA/PG_VERSION" ]; then
-
-		until ping -c 1 -W 1 master
-    do
-        echo "Waiting for master to ping..."
-        sleep 1s
-    done
-    until gosu postgres pg_basebackup -h master -D ${PGDATA} -U ${POSTGRES_USER} -vP
-    do
-        echo "Waiting for master to connect..."
-        sleep 1s
-    done
-    chmod 700 ${PGDATA}
-
+		until ping -c 1 -W 1 $POSTGRES_REPLICATE_FROM
+		do
+			echo "Waiting for master ($POSTGRES_REPLICATE_FROM) to ping..."
+			sleep 1s
+		done
+		until gosu postgres pg_basebackup -h $POSTGRES_REPLICATE_FROM -D ${PGDATA} -U ${POSTGRES_USER} -vP
+		do
+			echo "Waiting for master ($POSTGRES_REPLICATE_FROM) to connect..."
+			sleep 1s
+		done
+		chmod 700 ${PGDATA}
 		echo
 		for f in /docker-entrypoint-initdb.d/*; do
 			case "$f" in
