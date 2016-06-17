@@ -1,5 +1,10 @@
 # Changelog
 
+## 2016-06-17
+
+- Add possibility to configure recovery.conf via `RECOVERY_CONFIG_` env vars
+- Various bug fixes
+
 ## 2016-04-29
 
 - Add possibility to define cron jobs using `POSTGRES_CRON_*` env variables
