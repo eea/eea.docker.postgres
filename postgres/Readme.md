@@ -10,6 +10,7 @@ your non-related EEA projects.
   - `:latest` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/master/postgres/Dockerfile) (default)
   - `:9.5s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.5s/postgres/Dockerfile)
   - `:9.5` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.5/postgres/Dockerfile)
+  - `:9.4s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.4s/postgres/Dockerfile)
   - `:9.4` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.4/postgres/Dockerfile)
 
 ## Base docker image
