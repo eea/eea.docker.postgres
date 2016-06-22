@@ -158,8 +158,8 @@ The data container can also be easily
 **NEVER do this directly on PRODUCTION. This will DROP your existing database**
 
     $ cd eea.docker.postgres
-    $ cp /path/to/my/backups/datafs.gz backup/
     $ docker-compose up -d
+    $ docker cp datafs.gz eeadockerpostgres_postgres_1:/postgresql.backup/
     $ docker exec eeadockerpostgres_postgres_1 \
              gosu postgres /postgresql.restore/database-restore.sh datafs
 

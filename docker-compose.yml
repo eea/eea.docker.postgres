@@ -16,6 +16,6 @@ data:
   tty: true
   stdin_open: true
   volumes:
-  - /var/lib/postgresql/data
-  - ./backup:/postgresql.backup:z
+  - www-postgres-data:/var/lib/postgresql/data
+  - www-postgres-dump:/postgresql.backup
   command: ["chown", "-v", "-R", "999:999", "/var/lib/postgresql/data"]
