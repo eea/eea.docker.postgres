@@ -149,8 +149,8 @@ The data container can also be easily
     $ cd eea.docker.postgres
     $ docker-compose up -d
     $ docker exec -it eeadockerpostgres_postgres_1 \
-      sh -c "pg_dump -U zope datafs | gzip > /postgresql.backup/datafs.gz"
-    $ ls backup/
+      bash -c "gosu postgres pg_dump datafs | gzip > /postgresql.backup/datafs.gz"
+    $ ls /var/lib/docker/volumes/www-postgres-dump/_data
 
 ### Restore PostgreSQL database from backup
 
@@ -194,7 +194,11 @@ You should also check [Tuning Your PostgreSQL Server](https://wiki.postgresql.or
 In the same way you can define maintenance cron jobs by using
 `POSTGRES_CRON_` prefix. Example to backup nighly `datafs` database at 3 AM:
 
-    POSTGRES_CRON_1=0 3 * * * postgres bash -c "pg_dump datafs | gzip > /postgresql.backup/datafs.gz"
+    POSTGRES_CRON_1=0 3 * * * root gosu postgres pg_dump datafs | gzip > /postgresql.backup/datafs.gz
+
+or restore Staging DB daily at 5 AM:
+
+    POSTGRES_CRON_2=0 5 * * * root gosu postgres /postgresql.restore/database-restore.sh datafs
 
 ## Copyright and license
 
