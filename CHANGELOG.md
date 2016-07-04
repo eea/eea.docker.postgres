@@ -1,5 +1,9 @@
 # Changelog
 
+## 2016-07-04
+
+- Add script to easily backup database to `/postgresql.backup/` folder
+
 ## 2016-06-17
 
 - Add possibility to configure recovery.conf via `RECOVERY_CONFIG_` env vars

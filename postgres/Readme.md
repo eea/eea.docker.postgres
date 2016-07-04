@@ -194,11 +194,11 @@ You should also check [Tuning Your PostgreSQL Server](https://wiki.postgresql.or
 In the same way you can define maintenance cron jobs by using
 `POSTGRES_CRON_` prefix. Example to backup nighly `datafs` database at 3 AM:
 
-    POSTGRES_CRON_1=0 3 * * * root gosu postgres pg_dump datafs | gzip > /postgresql.backup/datafs.gz
+    POSTGRES_CRON_1=0 3 * * * postgres /postgresql.restore/database-backup.sh datafs
 
 or restore Staging DB daily at 5 AM:
 
-    POSTGRES_CRON_2=0 5 * * * root gosu postgres /postgresql.restore/database-restore.sh datafs
+    POSTGRES_CRON_2=0 5 * * * postgres /postgresql.restore/database-restore.sh datafs
 
 ## Copyright and license
 
