@@ -1,5 +1,9 @@
 # Changelog
 
+## 2016-07-21
+
+- Fix recovery.conf via environment variables
+
 ## 2016-07-04
 
 - Add script to easily backup database to `/postgresql.backup/` folder
