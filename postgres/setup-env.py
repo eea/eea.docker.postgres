@@ -30,8 +30,8 @@ if not os.path.isfile(zenv_conf):
 #
 # Setup recovery.conf for replication
 #
-recovery_conf = os.path.join(PGDATA, "/recovery.conf")
-recovery_done =  os.path.join(PGDATA, "/recovery.done")
+recovery_conf = os.path.join(PGDATA, "recovery.conf")
+recovery_done =  os.path.join(PGDATA, "recovery.done")
 if not (os.path.isfile(recovery_conf) or os.path.isfile(recovery_done)):
     configuration = []
     for variable in os.environ:
