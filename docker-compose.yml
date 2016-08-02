@@ -6,6 +6,8 @@ postgres:
   - "5432:5432"
   volumes_from:
   - data
+  volumes:
+  - /etc/localtime:/etc/localtime:ro
   environment:
     POSTGRES_USER: postgres
     POSTGRES_PASSWORD: postgres
