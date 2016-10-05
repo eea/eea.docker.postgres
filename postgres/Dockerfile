@@ -1,4 +1,4 @@
-FROM postgres:9.5
+FROM postgres:9.6
 MAINTAINER "EEA: IDM2 A-Team" <eea-edw-a-team-alerts@googlegroups.com>
 
 RUN mkdir -p /postgresql.conf.d /postgresql.restore /postgresql.backup \

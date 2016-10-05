@@ -8,10 +8,18 @@ your non-related EEA projects.
 ## Supported tags and respective Dockerfile links
 
   - `:latest` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/master/postgres/Dockerfile) (default)
+  - `:9.6s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.6s/postgres/Dockerfile)
+  - `:9.6` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.6/postgres/Dockerfile)
   - `:9.5s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.5s/postgres/Dockerfile)
   - `:9.5` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.5/postgres/Dockerfile)
   - `:9.4s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.4s/postgres/Dockerfile)
   - `:9.4` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.4/postgres/Dockerfile)
+  - `:9.3s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.3s/postgres/Dockerfile)
+  - `:9.3` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.3/postgres/Dockerfile)
+  - `:9.2s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.2s/postgres/Dockerfile)
+  - `:9.2` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.2/postgres/Dockerfile)
+  - `:9.1s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.1s/postgres/Dockerfile)
+  - `:9.1` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.1/postgres/Dockerfile)
 
 ## Base docker image
 
@@ -44,7 +52,7 @@ your non-related EEA projects.
 Or using docker-compose:
 
     postgres:
-      image: eeacms/postgres:9.5
+      image: eeacms/postgres
       ports:
       - "5432:5432"
       environment:
