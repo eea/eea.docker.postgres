@@ -1,5 +1,10 @@
 # Changelog
 
+## 2016-10-05
+
+- Upgrade to Postgres 9.6
+- Add tags for older PostgresSQL versions (9.3, 9.2, 9.1)
+
 ## 2016-07-21
 
 - Fix recovery.conf via environment variables

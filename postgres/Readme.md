@@ -5,13 +5,30 @@ Docker image for PostgreSQL with replication support and ZODB RelStorage ready
 This image is generic, thus you can obviously re-use it within
 your non-related EEA projects.
 
+ - Debian: **Jessie**
+ - PostgreSQL: **9.6**
+ - Expose: **5432**
+
 ## Supported tags and respective Dockerfile links
 
-  - `:latest` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/master/postgres/Dockerfile) (default)
-  - `:9.5s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.5s/postgres/Dockerfile)
-  - `:9.5` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.5/postgres/Dockerfile)
-  - `:9.4s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.4s/postgres/Dockerfile)
-  - `:9.4` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.4/postgres/Dockerfile)
+  - `:latest` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/master/postgres/Dockerfile) - Debian: **Jessie**, PostgreSQL: **9.6**
+  - `:9.6s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.6s/postgres/Dockerfile) - PostgreSQL: **9.6**
+  - `:9.5s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.5s/postgres/Dockerfile) - PostgreSQL: **9.5**
+  - `:9.4s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.4s/postgres/Dockerfile) - PostgreSQL: **9.4**
+  - `:9.3s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.3s/postgres/Dockerfile) - PostgreSQL: **9.3**
+  - `:9.2s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.2s/postgres/Dockerfile) - PostgreSQL: **9.2**
+  - `:9.1s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.1s/postgres/Dockerfile) - PostgreSQL: **9.1**
+
+### Stable and immutable tags
+
+  - `:9.6-1.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.6-1.0/postgres/Dockerfile) - PostgreSQL: **9.6** Release: **1.0**
+  - `:9.5-1.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.5-1.0/postgres/Dockerfile) - PostgreSQL: **9.5** Release: **1.0**
+  - `:9.4-1.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.4-1.0/postgres/Dockerfile) - PostgreSQL: **9.4** Release: **1.0**
+  - `:9.3-1.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.3-1.0/postgres/Dockerfile) - PostgreSQL: **9.3** Release: **1.0**
+  - `:9.2-1.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.2-1.0/postgres/Dockerfile) - PostgreSQL: **9.2** Release: **1.0**
+  - `:9.1-1.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.1-1.0/postgres/Dockerfile) - PostgreSQL: **9.1** Release: **1.0**
+
+See [older versions](https://github.com/eea/eea.docker.postgres/releases)
 
 ## Base docker image
 
@@ -44,7 +61,7 @@ your non-related EEA projects.
 Or using docker-compose:
 
     postgres:
-      image: eeacms/postgres:9.5
+      image: eeacms/postgres
       ports:
       - "5432:5432"
       environment:
