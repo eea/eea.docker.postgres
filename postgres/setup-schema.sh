@@ -21,11 +21,11 @@ fi
 
 if [ ! -z "$INITDB" ]; then
 
-  gosu postgres psql -q <<-EOF
+  psql -q <<-EOF
 CREATE USER $POSTGRES_DBUSER WITH PASSWORD '$POSTGRES_DBPASS';
 EOF
 
   for db in $POSTGRES_DBNAME; do
-    gosu postgres createdb -O $POSTGRES_DBUSER $db
+    createdb -O $POSTGRES_DBUSER $db
   done
 fi
