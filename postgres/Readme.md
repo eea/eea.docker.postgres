@@ -5,31 +5,55 @@ Docker image for PostgreSQL with replication support and ZODB RelStorage ready
 This image is generic, thus you can obviously re-use it within
 your non-related EEA projects.
 
+ - Debian: **Jessie**
+ - PostgreSQL: **9.6**
+ - Expose: **5432**
+
+
 ## Supported tags and respective Dockerfile links
 
-  - `:latest` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/master/postgres/Dockerfile) (default)
-  - `:9.5s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.5s/postgres/Dockerfile)
-  - `:9.5` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.5/postgres/Dockerfile)
-  - `:9.4s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.4s/postgres/Dockerfile)
-  - `:9.4` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.4/postgres/Dockerfile)
+  - `:latest` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/master/postgres/Dockerfile) - Debian: **Jessie**, PostgreSQL: **9.6**
+  - `:9.6s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.6s/postgres/Dockerfile) - PostgreSQL: **9.6**
+  - `:9.5s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.5s/postgres/Dockerfile) - PostgreSQL: **9.5**
+  - `:9.4s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.4s/postgres/Dockerfile) - PostgreSQL: **9.4**
+  - `:9.3s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.3s/postgres/Dockerfile) - PostgreSQL: **9.3**
+  - `:9.2s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.2s/postgres/Dockerfile) - PostgreSQL: **9.2**
+  - `:9.1s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.1s/postgres/Dockerfile) - PostgreSQL: **9.1**
+
+
+### Stable and immutable tags
+
+  - `:9.6-2.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.6-1.0/postgres/Dockerfile) - PostgreSQL: **9.6** Release: **2.0**
+  - `:9.5-2.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.5-1.0/postgres/Dockerfile) - PostgreSQL: **9.5** Release: **2.0**
+  - `:9.4-2.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.4-1.0/postgres/Dockerfile) - PostgreSQL: **9.4** Release: **2.0**
+  - `:9.3-2.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.3-1.0/postgres/Dockerfile) - PostgreSQL: **9.3** Release: **2.0**
+  - `:9.2-2.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.2-1.0/postgres/Dockerfile) - PostgreSQL: **9.2** Release: **2.0**
+  - `:9.1-2.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.1-1.0/postgres/Dockerfile) - PostgreSQL: **9.1** Release: **2.0**
+
+See [older versions](https://github.com/eea/eea.docker.postgres/releases)
+
 
 ## Base docker image
 
- - [hub.docker.com](https://registry.hub.docker.com/u/eeacms/postgres)
+ - [hub.docker.com](https://hub.docker.com/r/eeacms/postgres)
+
 
 ## Source code
 
   - [github.com](http://github.com/eea/eea.docker.postgres)
 
+
 ## Changelog
 
   - [CHANGELOG.md](https://github.com/eea/eea.docker.postgres/blob/master/CHANGELOG.md)
+
 
 ## Installation
 
 1. Install [Docker](https://www.docker.com/).
 
 2. Install [Docker Compose](https://docs.docker.com/compose/).
+
 
 ## Simple usage
 
@@ -56,6 +80,7 @@ Or using docker-compose:
       volumes:
       - postgres_data:/var/lib/postgresql/data
 
+
 ## PostgreSQL replication
 
 Start master node:
@@ -63,7 +88,7 @@ Start master node:
     $ docker run --name=master \
                  -e POSTGRES_USER=postgres \
                  -e POSTGRES_PASSWORD=postgres \
-                 -e POSTGRES_DBNAME=datafs zasync \
+                 -e POSTGRES_DBNAME="datafs zasync" \
                  -e POSTGRES_DBUSER=zope \
                  -e POSTGRES_DBPASS=zope \
                  -e POSTGRES_CONFIG_wal_level=hot_standby \
@@ -87,37 +112,42 @@ Start replica:
 
 or using docker-compose:
 
-    master:
-      image: eeacms/postgres
-      environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DBNAME=datafs zasync
-      - POSTGRES_DBUSER=zope
-      - POSTGRES_DBPASS=zope
-      - POSTGRES_CONFIG_wal_level=hot_standby
-      - POSTGRES_CONFIG_max_wal_senders=8
-      - POSTGRES_CONFIG_wal_keep_segments=8
-      - POSTGRES_CONFIG_hot_standby=on
-      volumes:
-      - master_data:/var/lib/postgresql/data
+    version: "2"
+    services:
+      master:
+        image: postgres-dev
+        environment:
+          POSTGRES_USER: "postgres"
+          POSTGRES_PASSWORD: "postgres"
+          POSTGRES_DBNAME: "datafs zasync"
+          POSTGRES_DBUSER: "zope"
+          POSTGRES_DBPASS: "zope"
+          POSTGRES_CONFIG_wal_level: "hot_standby"
+          POSTGRES_CONFIG_max_wal_senders: "8"
+          POSTGRES_CONFIG_wal_keep_segments: "8"
+          POSTGRES_CONFIG_hot_standby: "on"
+        volumes:
+        - master-data:/var/lib/postgresql/data
 
-    replica:
-      image: eeacms/postgres
-      tty: true
-      stdin_open: true
-      links:
-      - master
-      environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_CONFIG_wal_level=hot_standby
-      - POSTGRES_CONFIG_max_wal_senders=8
-      - POSTGRES_CONFIG_wal_keep_segments=8
-      - POSTGRES_CONFIG_hot_standby=on
-      - POSTGRES_REPLICATE_FROM=master
-      volumes:
-      - replica_data:/var/lib/postgresql/data
+      replica:
+        image: postgres-dev
+        depends_on:
+        - master
+        environment:
+          POSTGRES_USER: "postgres"
+          POSTGRES_PASSWORD: "postgres"
+          POSTGRES_CONFIG_wal_level: "hot_standby"
+          POSTGRES_CONFIG_max_wal_senders: "8"
+          POSTGRES_CONFIG_wal_keep_segments: "8"
+          POSTGRES_CONFIG_hot_standby: "on"
+          POSTGRES_REPLICATE_FROM: "master"
+        volumes:
+        - replica-data:/var/lib/postgresql/data
+
+    volumes:
+      master-data:
+      replica-data:
+
 
 Customize your deployment by changing environment variables.
 See [Supported environment variables](#env) section bellow.
@@ -126,31 +156,27 @@ See [Supported environment variables](#env) section bellow.
 within data container. See section [Restore existing database](#restore)
 
 
-## Persistent data as you wish
-The PostgreSQL database is kept in a
-[data-only container](https://medium.com/@ramangupta/why-docker-data-containers-are-good-589b3c6c749e)
-named *data*. The data container keeps the persistent data for a production environment and
-[must be backed up](https://github.com/paimpozhil/docker-volume-backup).
+## Where to Store Data
 
-So if you are running in a development environment, you can skip the backup and delete
-the container if you want.
+There are several ways to store data used by applications that run in Docker containers. 
+We encourage you to familiarize with the options available.
 
-On a production environment you would probably want to backup the container at regular intervals.
-The data container can also be easily
-[copied, moved and be reused between different environments](https://docs.docker.com/userguide/dockervolumes/#backup-restore-or-migrate-data-volumes).
+The [Docker documentation](https://docs.docker.com/engine/tutorials/dockervolumes/)
+is a good starting point for understanding the different storage options and
+variations, and there are multiple blogs and forum postings that discuss and
+give advice in this area.
 
 
 <a name="restore"></a>
 ## Restore existing database
-
 
 ### Extract PostgreSQL database from the container
 
     $ cd eea.docker.postgres
     $ docker-compose up -d
     $ docker exec -it eeadockerpostgres_postgres_1 \
-      bash -c "gosu postgres pg_dump datafs | gzip > /postgresql.backup/datafs.gz"
-    $ ls /var/lib/docker/volumes/www-postgres-dump/_data
+             gosu postgres /postgresql.restore/database-backup.sh datafs
+    $ docker cp eeadockerpostgres_postgres_1:/postgresql.backup/datafs.gz .
 
 ### Restore PostgreSQL database from backup
 
@@ -179,6 +205,7 @@ The data container can also be easily
 * `POSTGRES_DBUSER` Owner for `POSTGRES_DBNAME`
 * `POSTGRES_DBPASS` Password for `POSTGRES_DBUSER`
 * `POSTGRES_REPLICATE_FROM` Start a PostgreSQL replica of the given master
+* `POSTGRES_REPLICATION_NETWORK` Restrict replication only on this network (e.g.: `172.168.0.0/16`)
 
 You can also override postgres configuration via environment variables by using
 `POSTGRES_CONFIG_` prefix. Example:
