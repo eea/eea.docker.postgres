@@ -12,3 +12,4 @@ COPY setup-*.sh /docker-entrypoint-initdb.d/
 COPY default.conf /postgresql.conf.d/
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD ["postgres"]
