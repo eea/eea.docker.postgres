@@ -10,6 +10,11 @@ zenv_conf = "/postgresql.conf.d/zenv.conf"
 if not os.path.isfile(zenv_conf):
     configuration = []
     for variable in os.environ:
+        if variable == 'POSTGRES_CONFIG':
+            value = os.environ[variable]
+            configuration.append(value)
+            continue
+
         if not variable.startswith("POSTGRES_CONFIG_"):
             continue
 
@@ -35,6 +40,11 @@ recovery_done =  os.path.join(PGDATA, "recovery.done")
 if not (os.path.isfile(recovery_conf) or os.path.isfile(recovery_done)):
     configuration = []
     for variable in os.environ:
+        if variable == "RECOVERY_CONFIG":
+            value = os.environ[variable]
+            configuration.append(value)
+            continue
+
         if not variable.startswith("RECOVERY_CONFIG_"):
             continue
 
