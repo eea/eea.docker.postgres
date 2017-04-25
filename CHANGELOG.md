@@ -1,5 +1,13 @@
 # Changelog
 
+## 2017-04-25 (Release 3.0)
+
+- Support PostgreSQL configuration via multiline env `POSTGRES_CONFIG`
+
+- Support PostgresSQL configuration of `recovery.conf` via multiline env `RECOVERY_CONFIG`
+
+- Support PostgresSQL cron jobs configuration via multiline env `POSTGRES_CRONS`
+
 ## 2017-04-25 (Release 2.1)
 
 - Add ENV for paths `PG_ARCHIVE`, `PG_CONFD`, `PG_BACKUP`, `PG_RESTORE`
