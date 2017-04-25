@@ -6,7 +6,7 @@ ENV PG_ARCHIVE=/var/lib/postgresql/archive \
     PG_RESTORE=/postgresql.restore \
     PG_BACKUP=/postgresql.backup
 
-RUN mkdir -p PG_ARCHIVE $PG_CONFD $PG_RESTORE $PG_BACKUP \
+RUN mkdir -p $PG_ARCHIVE $PG_CONFD $PG_RESTORE $PG_BACKUP \
  && chown -R postgres:postgres $PG_ARCHIVE $PG_CONFD $PG_RESTORE $PG_BACKUP \
  && mv /docker-entrypoint.sh /master-entrypoint.sh
 

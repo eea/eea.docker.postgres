@@ -1,5 +1,14 @@
 # Changelog
 
+## 2017-04-25 (Release 2.1)
+
+- Add ENV for paths `PG_ARCHIVE`, `PG_CONFD`, `PG_BACKUP`, `PG_RESTORE`
+  and fix permissions within.
+
+## 2017-02-24
+
+- Release 2.0
+
 ## 2016-10-05
 
 - Upgrade to Postgres 9.6
