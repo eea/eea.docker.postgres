@@ -23,12 +23,12 @@ your non-related EEA projects.
 
 ### Stable and immutable tags
 
-  - `:9.6-2.1` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.6-2.1/postgres/Dockerfile) - PostgreSQL: **9.6** Release: **2.1**
-  - `:9.5-2.1` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.5-2.1/postgres/Dockerfile) - PostgreSQL: **9.5** Release: **2.1**
-  - `:9.4-2.1` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.4-2.1/postgres/Dockerfile) - PostgreSQL: **9.4** Release: **2.1**
-  - `:9.3-2.1` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.3-2.1/postgres/Dockerfile) - PostgreSQL: **9.3** Release: **2.1**
-  - `:9.2-2.1` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.2-2.1/postgres/Dockerfile) - PostgreSQL: **9.2** Release: **2.1**
-  - `:9.1-2.1` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.1-2.1/postgres/Dockerfile) - PostgreSQL: **9.1** Release: **2.1**
+  - `:9.6-3.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.6-3.0/postgres/Dockerfile) - PostgreSQL: **9.6** Release: **3.0**
+  - `:9.5-3.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.5-3.0/postgres/Dockerfile) - PostgreSQL: **9.5** Release: **3.0**
+  - `:9.4-3.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.4-3.0/postgres/Dockerfile) - PostgreSQL: **9.4** Release: **3.0**
+  - `:9.3-3.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.3-3.0/postgres/Dockerfile) - PostgreSQL: **9.3** Release: **3.0**
+  - `:9.2-3.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.2-3.0/postgres/Dockerfile) - PostgreSQL: **9.2** Release: **3.0**
+  - `:9.1-3.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.1-3.0/postgres/Dockerfile) - PostgreSQL: **9.1** Release: **3.0**
 
 See [older versions](https://github.com/eea/eea.docker.postgres/releases)
 
@@ -210,6 +210,9 @@ give advice in this area.
 * `POSTGRES_DBPASS` Password for `POSTGRES_DBUSER`
 * `POSTGRES_REPLICATE_FROM` Start a PostgreSQL replica of the given master
 * `POSTGRES_REPLICATION_NETWORK` Restrict replication only on this network (e.g.: `172.168.0.0/16`)
+* `POSTGRES_CONFIG` Multiline environment variable to provide additional or to override postgres configuration.
+* `RECOVERY_CONFIG` Multiline environment variables to add entries to `recovery.conf`
+* `POSTGRES_CRONS` Multiline environment variable to define maintenance cron jobs (nighly backup, cleanup archive WALs)
 
 You can also override postgres configuration via environment variables by using
 `POSTGRES_CONFIG_` prefix. Example:
