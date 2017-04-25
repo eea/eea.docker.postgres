@@ -1,5 +1,9 @@
 # Changelog
 
+## 2017-02-24
+
+- Release 2.0
+
 ## 2016-10-05
 
 - Upgrade to Postgres 9.6
