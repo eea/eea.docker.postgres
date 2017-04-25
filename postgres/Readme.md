@@ -23,12 +23,12 @@ your non-related EEA projects.
 
 ### Stable and immutable tags
 
-  - `:9.6-2.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.6-1.0/postgres/Dockerfile) - PostgreSQL: **9.6** Release: **2.0**
-  - `:9.5-2.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.5-1.0/postgres/Dockerfile) - PostgreSQL: **9.5** Release: **2.0**
-  - `:9.4-2.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.4-1.0/postgres/Dockerfile) - PostgreSQL: **9.4** Release: **2.0**
-  - `:9.3-2.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.3-1.0/postgres/Dockerfile) - PostgreSQL: **9.3** Release: **2.0**
-  - `:9.2-2.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.2-1.0/postgres/Dockerfile) - PostgreSQL: **9.2** Release: **2.0**
-  - `:9.1-2.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.1-1.0/postgres/Dockerfile) - PostgreSQL: **9.1** Release: **2.0**
+  - `:9.6-2.1` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.6-2.1/postgres/Dockerfile) - PostgreSQL: **9.6** Release: **2.1**
+  - `:9.5-2.1` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.5-2.1/postgres/Dockerfile) - PostgreSQL: **9.5** Release: **2.1**
+  - `:9.4-2.1` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.4-2.1/postgres/Dockerfile) - PostgreSQL: **9.4** Release: **2.1**
+  - `:9.3-2.1` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.3-2.1/postgres/Dockerfile) - PostgreSQL: **9.3** Release: **2.1**
+  - `:9.2-2.1` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.2-2.1/postgres/Dockerfile) - PostgreSQL: **9.2** Release: **2.1**
+  - `:9.1-2.1` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.1-2.1/postgres/Dockerfile) - PostgreSQL: **9.1** Release: **2.1**
 
 See [older versions](https://github.com/eea/eea.docker.postgres/releases)
 
@@ -67,18 +67,22 @@ See [older versions](https://github.com/eea/eea.docker.postgres/releases)
 
 Or using docker-compose:
 
-    postgres:
-      image: eeacms/postgres:9.5
-      ports:
-      - "5432:5432"
-      environment:
-        POSTGRES_USER: postgres
-        POSTGRES_PASSWORD: postgres
-        POSTGRES_DBNAME: datafs zasync
-        POSTGRES_DBUSER: zope
-        POSTGRES_DBPASS: zope
-      volumes:
-      - postgres_data:/var/lib/postgresql/data
+    version: "2"
+    services:
+      postgres:
+        image: eeacms/postgres
+        ports:
+        - "5432:5432"
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DBNAME: datafs zasync
+          POSTGRES_DBUSER: zope
+          POSTGRES_DBPASS: zope
+        volumes:
+        - postgres-data:/var/lib/postgresql/data
+    volumes:
+      postgres-data:
 
 
 ## PostgreSQL replication
@@ -158,7 +162,7 @@ within data container. See section [Restore existing database](#restore)
 
 ## Where to Store Data
 
-There are several ways to store data used by applications that run in Docker containers. 
+There are several ways to store data used by applications that run in Docker containers.
 We encourage you to familiarize with the options available.
 
 The [Docker documentation](https://docs.docker.com/engine/tutorials/dockervolumes/)
