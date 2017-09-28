@@ -234,6 +234,14 @@ or restore Staging DB daily at 5 AM:
 
     POSTGRES_CRON_2=0 5 * * * postgres /postgresql.restore/database-restore.sh datafs
 
+## Troubleshooting
+
+If you get errors like `FATAL: could not map anonymous shared memory: Cannot allocate memory`, lower the `shared_buffers` via environment variable (default `2G`):
+
+    POSTGRES_CONFIG_shared_buffers=512MB
+    
+See also: [Tuning Your PostgreSQL Server](https://wiki.postgresql.org/wiki/Tuning_Your_PostgreSQL_Server)
+
 ## Copyright and license
 
 The Initial Owner of the Original Code is European Environment Agency (EEA).
