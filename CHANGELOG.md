@@ -1,5 +1,16 @@
 # Changelog
 
+## 2018-01-30 (Release 3.1)
+
+- Support PostgreSQL `createdb` options via `POSTGRES_DBPARAMS` environment variable. e.g.:
+
+      $ docker run -d --name=riot \
+                   -e POSTGRES_DBNAME=riot \
+                   -e POSTGRES_DBUSER=riot \
+                   -e POSTGRES_DBPASS=riot \
+                   -e POSTGRES_DBPARAMS="--lc-collate=C --lc-ctype=C --template=template0"  \
+                eeacms/postgres
+
 ## 2017-04-25 (Release 3.0)
 
 - Support PostgreSQL configuration via multiline env `POSTGRES_CONFIG`
