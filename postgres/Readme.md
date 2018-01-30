@@ -12,7 +12,7 @@ your non-related EEA projects.
 
 ## Supported tags and respective Dockerfile links
 
-  - `:latest` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/master/postgres/Dockerfile) - Debian: **Jessie**, PostgreSQL: **9.6**
+  - `:latest` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/master/postgres/Dockerfile) - PostgreSQL: **9.6**
   - `:9.6s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.6s/postgres/Dockerfile) - PostgreSQL: **9.6**
   - `:9.5s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.5s/postgres/Dockerfile) - PostgreSQL: **9.5**
   - `:9.4s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.4s/postgres/Dockerfile) - PostgreSQL: **9.4**
@@ -23,12 +23,12 @@ your non-related EEA projects.
 
 ### Stable and immutable tags
 
-  - `:9.6-3.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.6-3.0/postgres/Dockerfile) - PostgreSQL: **9.6** Release: **3.0**
-  - `:9.5-3.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.5-3.0/postgres/Dockerfile) - PostgreSQL: **9.5** Release: **3.0**
-  - `:9.4-3.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.4-3.0/postgres/Dockerfile) - PostgreSQL: **9.4** Release: **3.0**
-  - `:9.3-3.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.3-3.0/postgres/Dockerfile) - PostgreSQL: **9.3** Release: **3.0**
-  - `:9.2-3.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.2-3.0/postgres/Dockerfile) - PostgreSQL: **9.2** Release: **3.0**
-  - `:9.1-3.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.1-3.0/postgres/Dockerfile) - PostgreSQL: **9.1** Release: **3.0**
+  - `:9.6-3.1` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.6-3.1/postgres/Dockerfile) - PostgreSQL: **9.6** Release: **3.1**
+  - `:9.5-3.1` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.5-3.1/postgres/Dockerfile) - PostgreSQL: **9.5** Release: **3.1**
+  - `:9.4-3.1` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.4-3.1/postgres/Dockerfile) - PostgreSQL: **9.4** Release: **3.1**
+  - `:9.3-3.1` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.3-3.1/postgres/Dockerfile) - PostgreSQL: **9.3** Release: **3.1**
+  - `:9.2-3.1` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.2-3.1/postgres/Dockerfile) - PostgreSQL: **9.2** Release: **3.1**
+  - `:9.1-3.1` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.1-3.1/postgres/Dockerfile) - PostgreSQL: **9.1** Release: **3.1**
 
 See [older versions](https://github.com/eea/eea.docker.postgres/releases)
 
@@ -206,6 +206,7 @@ give advice in this area.
   environment variable. Default `postgres`
 * `POSTGRES_DBNAME` Create multiple databases (space separated) within PostgreSQL with `POSTGRES_DBUSER` as owner.
   E.g. POSTGRES_DBNAME=datafs zasync
+* `POSTGRES_DBPARAMS` Create POSTGRES_DBNAME with custom options, e.g.: `POSTGRES_DBPARAMS="--lc-collate=C --template=template0 --lc-ctype=C"`. See `createdb --help` for possible options.
 * `POSTGRES_DBUSER` Owner for `POSTGRES_DBNAME`
 * `POSTGRES_DBPASS` Password for `POSTGRES_DBUSER`
 * `POSTGRES_REPLICATE_FROM` Start a PostgreSQL replica of the given master
@@ -239,7 +240,7 @@ or restore Staging DB daily at 5 AM:
 If you get errors like `FATAL: could not map anonymous shared memory: Cannot allocate memory`, lower the `shared_buffers` via environment variable (default `2G`):
 
     POSTGRES_CONFIG_shared_buffers=512MB
-    
+
 See also: [Tuning Your PostgreSQL Server](https://wiki.postgresql.org/wiki/Tuning_Your_PostgreSQL_Server)
 
 ## Copyright and license
