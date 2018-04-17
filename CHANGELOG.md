@@ -1,5 +1,9 @@
 # Changelog
 
+## 2018-04-17 (Release 3.2)
+
+- Make PostgreSQL related environment variables available to cronjobs
+
 ## 2018-01-30 (Release 3.1)
 
 - Support PostgreSQL `createdb` options via `POSTGRES_DBPARAMS` environment variable. e.g.:
