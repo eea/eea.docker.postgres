@@ -2,7 +2,7 @@
 set -e
 
 # Provide POSTGRES_CRON_* via environment variable
-rm -rf /etc/cron.d/postgres
+rm -rf /etc/cron.d/postgres /etc/environment
 for item in `env`; do
    case "$item" in
        POSTGRES_CRON*)
@@ -10,6 +10,16 @@ for item in `env`; do
             printenv $ENVVAR >> /etc/cron.d/postgres
             ;;
    esac
+   case "$item" in
+       PG*)
+            echo "$item" >> /etc/environment
+            ;;
+    esac
+    case "$item" in
+        POSTGRES_*)
+            echo "$item" >> /etc/environment
+            ;;
+    esac
 done
 
 if [ -f /etc/cron.d/postgres ]; then
