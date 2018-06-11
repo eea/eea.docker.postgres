@@ -1,5 +1,9 @@
 # Changelog
 
+## 2018-06-11 (Release 3.4)
+
+- Fix setup-env.py `/usr/bin/env: ‘python’: No such file or directory`
+
 ## 2018-06-08 (Release 3.3)
 
 - Upgrade to the latest PostgreSQL versions (9.6.9, 9.5.13, 9.4.18, 9.3.23)
