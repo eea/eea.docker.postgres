@@ -1,5 +1,9 @@
 # Changelog
 
+@@ 2018-10-05 (Release 3.5)
+
+- Add possibility to specify backup/restore gzip path
+
 ## 2018-06-11 (Release 3.4)
 
 - Fix setup-env.py `/usr/bin/env: ‘python’: No such file or directory`
