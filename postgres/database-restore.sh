@@ -1,16 +1,21 @@
 #!/bin/bash
 set -e
 
-DB=$1
 USER=${POSTGRES_DBUSER:-zope}
+DB=$1
+GZ=$2
+
+if [ -z "${GZ}" ]; then
+    GZ="/postgresql.backup/${DB}.gz"
+fi
 
 if [ -z "${DB}" ]; then
-  echo "Usage gosu postgres /postgres.restore/database-restore.sh mydb"
+  echo "Usage gosu postgres /postgres.restore/database-restore.sh mydb [/path/to/mydb.gz]"
   exit 1
 fi
 
-if [ ! -f /postgresql.backup/${DB}.gz ]; then
-  echo "Please provide restoring pg_dump at /postgresql.backup/${DB}.gz"
+if [ ! -f ${GZ} ]; then
+  echo "Please provide restoring pg_dump at ${GZ}"
   exit 1
 fi
 
@@ -20,7 +25,7 @@ psql -q <<-EOF
 EOF
 
 # Re-import database from gzip
-bash -c "gunzip -c /postgresql.backup/${DB}.gz | psql ${DB}_tmp"
+bash -c "gunzip -c ${GZ} | psql ${DB}_tmp"
 
 # Allow connections to database
 psql -q <<-EOF
