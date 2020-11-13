@@ -1,5 +1,9 @@
 # Changelog
 
+@@ 2020-11-13 (Release 3.6)
+
+- Upgrade to 9.6.20, upgrade OS to stretch
+
 @@ 2018-10-05 (Release 3.5)
 
 - Add possibility to specify backup/restore gzip path
