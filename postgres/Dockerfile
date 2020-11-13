@@ -5,6 +5,7 @@ ENV PG_ARCHIVE=/var/lib/postgresql/archive \
     PG_CONFD=/postgresql.conf.d \
     PG_RESTORE=/postgresql.restore \
     PG_BACKUP=/postgresql.backup
+
 RUN apt-get update -q \
  && apt-get install -y --no-install-recommends python3 \
  && apt-get clean \
