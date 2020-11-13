@@ -13,6 +13,7 @@ your non-related EEA projects.
 ## Supported tags and respective Dockerfile links
 
   - `:latest` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/master/postgres/Dockerfile) - PostgreSQL: **9.6**
+  - `:11s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/11s/postgres/Dockerfile) - PostgreSQL: **11**
   - `:10s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/10s/postgres/Dockerfile) - PostgreSQL: **10**
   - `:9.6s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.6s/postgres/Dockerfile) - PostgreSQL: **9.6**
   - `:9.5s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.5s/postgres/Dockerfile) - PostgreSQL: **9.5**
@@ -20,6 +21,7 @@ your non-related EEA projects.
 
 ### Stable and immutable tags
 
+  - `:11.10-3.6` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/11.10-3.6/postgres/Dockerfile) - PostgreSQL: **11.10** Release: **3.6**
   - `:10.14-3.6` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/10.14-3.6/postgres/Dockerfile) - PostgreSQL: **10.14** Release: **3.6**
   - `:9.6-3.6` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.6-3.6/postgres/Dockerfile) - PostgreSQL: **9.6.20** Release: **3.6**
   - `:9.5-3.6` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.5-3.6/postgres/Dockerfile) - PostgreSQL: **9.5.24** Release: **3.6**
