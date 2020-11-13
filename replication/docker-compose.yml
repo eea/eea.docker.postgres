@@ -1,5 +1,5 @@
 master:
-  image: eeacms/postgres
+  image: eeacms/postgres:10s
   environment:
   - POSTGRES_USER=postgres
   - POSTGRES_PASSWORD=postgres
@@ -12,7 +12,7 @@ master:
   - POSTGRES_CONFIG_hot_standby=on
 
 replica:
-  image: eeacms/postgres
+  image: eeacms/postgres:10s
   tty: true
   stdin_open: true
   links:
