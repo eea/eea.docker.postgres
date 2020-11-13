@@ -1,6 +1,10 @@
 # Changelog
 
-@@ 2018-10-05 (Release 3.5)
+## 2020-11-13 (Release 3.6)
+
+- Upgrade to 10.14, OS Stretch
+
+## 2018-10-05 (Release 3.5)
 
 - Add possibility to specify backup/restore gzip path
 
