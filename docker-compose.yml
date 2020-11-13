@@ -1,5 +1,5 @@
 postgres:
-  image: eeacms/postgres
+  image: eeacms/postgres:9.5s
   labels:
     io.rancher.sidekicks: data
   ports:
