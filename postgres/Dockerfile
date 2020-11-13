@@ -1,4 +1,4 @@
-FROM postgres:11.9
+FROM postgres:11
 MAINTAINER "EEA: IDM2 A-Team" <eea-edw-a-team-alerts@googlegroups.com>
 
 ENV PG_ARCHIVE=/var/lib/postgresql/archive \
@@ -6,7 +6,10 @@ ENV PG_ARCHIVE=/var/lib/postgresql/archive \
     PG_RESTORE=/postgresql.restore \
     PG_BACKUP=/postgresql.backup
 
-RUN mkdir -p $PG_ARCHIVE $PG_CONFD $PG_RESTORE $PG_BACKUP \
+RUN apt-get update -q \
+ && apt-get install -y --no-install-recommends python3 iputils-ping\
+ && apt-get clean \
+ && mkdir -p $PG_ARCHIVE $PG_CONFD $PG_RESTORE $PG_BACKUP \
  && chown -R postgres:postgres $PG_ARCHIVE $PG_CONFD $PG_RESTORE $PG_BACKUP \
  && mv /docker-entrypoint.sh /master-entrypoint.sh
 
