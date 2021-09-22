@@ -7,7 +7,7 @@ ENV PG_ARCHIVE=/var/lib/postgresql/archive \
     PG_BACKUP=/postgresql.backup
 
 RUN apt-get update -q \
- && apt-get install -y --no-install-recommends python3 iputils-ping\
+ && apt-get install -y --no-install-recommends python3 iputils-ping cron\
  && apt-get clean \
  && mkdir -p $PG_ARCHIVE $PG_CONFD $PG_RESTORE $PG_BACKUP \
  && chown -R postgres:postgres $PG_ARCHIVE $PG_CONFD $PG_RESTORE $PG_BACKUP \
