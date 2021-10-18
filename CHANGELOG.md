@@ -1,8 +1,8 @@
 # Changelog
 
-## 2020-11-13 (Release 3.6)
+## 2021-10-18 (Release 3.6)
 
-- Upgrade to 10.14, OS Stretch
+- Upgrade to 10.18, OS Stretch
 
 ## 2018-10-05 (Release 3.5)
 
