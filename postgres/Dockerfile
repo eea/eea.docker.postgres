@@ -1,4 +1,4 @@
-FROM postgres:11
+FROM postgres:11.15-stretch
 MAINTAINER "EEA: IDM2 A-Team" <eea-edw-a-team-alerts@googlegroups.com>
 
 ENV PG_ARCHIVE=/var/lib/postgresql/archive \
