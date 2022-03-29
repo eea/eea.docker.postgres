@@ -10,9 +10,8 @@ RUN apt-get update -q \
  && apt-get install -y --no-install-recommends python3 iputils-ping\
  && apt-get clean \
  && mkdir -p $PG_ARCHIVE $PG_CONFD $PG_RESTORE $PG_BACKUP \
- && chown -R postgres:postgres $PG_ARCHIVE $PG_CONFD $PG_RESTORE $PG_BACKUP 
-
-RUN mv /usr/local/bin/docker-entrypoint.sh /master-entrypoint.sh
+ && chown -R postgres:postgres $PG_ARCHIVE $PG_CONFD $PG_RESTORE $PG_BACKUP \
+ && mv /usr/local/bin/docker-entrypoint.sh /master-entrypoint.sh
  
 COPY database-backup.sh database-restore.sh /postgresql.restore/
 COPY replica-entrypoint.sh docker-entrypoint.sh /
