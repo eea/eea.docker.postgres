@@ -6,7 +6,7 @@ This image is generic, thus you can obviously re-use it within
 your non-related EEA projects.
 
  - Debian: **Stretch**
- - PostgreSQL: **10.18**
+ - PostgreSQL: **10.20**
  - Expose: **5432**
 
 
@@ -21,9 +21,9 @@ your non-related EEA projects.
 
 ### Stable and immutable tags
 
-  - `:11.10-3.6` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/11.10-3.6/postgres/Dockerfile) - PostgreSQL: **11.10** Release: **3.6**
-  - `:10.18-3.6` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/10.18-3.6/postgres/Dockerfile) - PostgreSQL: **10.18** Release: **3.6**
-  - `:9.6-3.6` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.6-3.6/postgres/Dockerfile) - PostgreSQL: **9.6.20** Release: **3.6**
+  - `:11.15-3.7` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/11.15-3.7/postgres/Dockerfile) - PostgreSQL: **11.15** Release: **3.7**
+  - `:10.20-3.7` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/10.20-3.7/postgres/Dockerfile) - PostgreSQL: **10.20** Release: **3.7**
+  - `:9.6.24-3.7` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.6.24-3.7/postgres/Dockerfile) - PostgreSQL: **9.6.24** Release: **3.7**
   - `:9.5-3.6` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.5-3.6/postgres/Dockerfile) - PostgreSQL: **9.5.24** Release: **3.6**
 
 See [older versions](https://github.com/eea/eea.docker.postgres/releases)
