@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 postgres:
   image: eeacms/postgres
   labels:
@@ -14,14 +15,29 @@ postgres:
     POSTGRES_DBNAME: datafs zasync
     POSTGRES_DBUSER: zope
     POSTGRES_DBPASS: zope
+=======
+version: "3"
+>>>>>>> c636968 (fix(default.conf): and apply more RelStorage tunning - refs #148213)
 
-data:
-  image: busybox
-  labels:
-    io.rancher.container.start_once: 'true'
-  tty: true
-  stdin_open: true
-  volumes:
-  - www-postgres-data:/var/lib/postgresql/data
-  - www-postgres-dump:/postgresql.backup
-  command: ["chown", "-v", "-R", "999:999", "/var/lib/postgresql/data"]
+services:
+  postgres:
+    image: eeacms/postgres:11s
+    ports:
+    - "5432:5432"
+    environment:
+      POSTGRES_CONFIG: max_connections = 150
+      POSTGRES_CRONS: ""
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DBNAME: zope
+      POSTGRES_DBUSER: zope
+      POSTGRES_DBPASS: zope
+    volumes:
+    - postgres_data:/var/lib/postgresql/data
+    - postgres_dump:/postgresql.backup
+    - postgres_archive:/var/lib/postgresql/archive
+
+volumes:
+  postgres_data: {}
+  postgres_dump: {}
+  postgres_archive: {}
