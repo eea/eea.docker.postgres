@@ -1,5 +1,10 @@
 # Changelog
 
+## 2022-09-09 (Release 4.0)
+
+- Fix default.conf and apply more RelStorage tunning:
+  https://relstorage.readthedocs.io/en/latest/postgresql/setup.html
+
 ## 2021-10-18 (Release 3.6)
 
 - Upgrade to 10.18, OS Stretch
