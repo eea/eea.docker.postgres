@@ -1,27 +1,38 @@
-master:
-  image: eeacms/postgres
-  environment:
-  - POSTGRES_USER=postgres
-  - POSTGRES_PASSWORD=postgres
-  - POSTGRES_DBNAME=datafs zasync
-  - POSTGRES_DBUSER=zope
-  - POSTGRES_DBPASS=zope
-  - POSTGRES_CONFIG_wal_level=hot_standby
-  - POSTGRES_CONFIG_max_wal_senders=8
-  - POSTGRES_CONFIG_wal_keep_segments=8
-  - POSTGRES_CONFIG_hot_standby=on
+version: "3"
 
-replica:
-  image: eeacms/postgres
-  tty: true
-  stdin_open: true
-  links:
-  - master:db-pg-master
-  environment:
-  - POSTGRES_USER=postgres
-  - POSTGRES_PASSWORD=postgres
-  - POSTGRES_CONFIG_wal_level=hot_standby
-  - POSTGRES_CONFIG_max_wal_senders=8
-  - POSTGRES_CONFIG_wal_keep_segments=8
-  - POSTGRES_CONFIG_hot_standby=on
-  - POSTGRES_REPLICATE_FROM=db-pg-master
+services:
+  master:
+    image: eeacms/postgres:12s
+    environment:
+    - POSTGRES_USER=postgres
+    - POSTGRES_PASSWORD=postgres
+    - POSTGRES_DBNAME=datafs zasync
+    - POSTGRES_DBUSER=zope
+    - POSTGRES_DBPASS=zope
+    - POSTGRES_CONFIG_wal_level=replica
+    - POSTGRES_CONFIG_max_wal_senders=8
+    - POSTGRES_CONFIG_wal_keep_segments=8
+    - POSTGRES_CONFIG_hot_standby=on
+  volumes:
+    - master:/var/lib/postgresql/data
+
+  replica:
+    image: eeacms/postgres:12s
+    tty: true
+    stdin_open: true
+    links:
+    - master:db-pg-master
+    environment:
+    - POSTGRES_USER=postgres
+    - POSTGRES_PASSWORD=postgres
+    - POSTGRES_CONFIG_wal_level=replica
+    - POSTGRES_CONFIG_max_wal_senders=8
+    - POSTGRES_CONFIG_wal_keep_segments=8
+    - POSTGRES_CONFIG_hot_standby=on
+    - POSTGRES_REPLICATE_FROM=db-pg-master
+  volumes:
+    - replica:/var/lib/postgresql/data
+
+volumes:
+  master: {}
+  replica: {}
