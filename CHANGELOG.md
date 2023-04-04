@@ -1,5 +1,10 @@
 # Changelog
 
+## 2023-04-04 (Release 4.2)
+
+- Upgrade to 10.23
+- Upgrade to buster
+
 ## 2022-09-09 (Release 4.0)
 
 - Upgrade to 10.21
