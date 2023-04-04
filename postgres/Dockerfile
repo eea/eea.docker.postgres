@@ -236,10 +236,7 @@ COPY crond.sh setup-env.py /bin/
 COPY setup-*.sh /docker-entrypoint-initdb.d/
 COPY default.conf /postgresql.conf.d/
 
-RUN rm -f /etc/apt/sources.list.d/pgdg.list \
- && apt-get update -q \
- && apt-get -y install apt-transport-https \
- && printf "deb http://apt-archive.postgresql.org/pub/repos/apt/ stretch-pgdg main" > /etc/apt/sources.list.d/pgdg.list \
+RUN apt-get update -q \
  && apt-get install -y --no-install-recommends python3 iputils-ping cron\
  && apt-get clean \
  && mkdir -p $PG_ARCHIVE $PG_CONFD $PG_RESTORE $PG_BACKUP \
