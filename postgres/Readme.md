@@ -30,7 +30,7 @@ your non-related EEA projects.
   - `:11.19-4.1` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/11.19-4.1/postgres/Dockerfile) - PostgreSQL: **11.19** Release: **4.1**
   - `:10.23-4.2` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/10.23-4.2/postgres/Dockerfile) - PostgreSQL: **10.23** Release: **4.2**
   - `:9.6-4.2` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.6.24-4.2/postgres/Dockerfile) - PostgreSQL: **9.6.24** Release: **4.2**
-  - `:9.5-3.7` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.5-3.6/postgres/Dockerfile) - PostgreSQL: **9.5.25** Release: **3.7**
+  - `:9.5-3.7` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.5-3.7/postgres/Dockerfile) - PostgreSQL: **9.5.25** Release: **3.7**
 
 
 See [older versions](https://github.com/eea/eea.docker.postgres/releases)
