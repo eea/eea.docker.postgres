@@ -9,7 +9,6 @@ your non-related EEA projects.
  - PostgreSQL: **9.5**
  - Expose: **5432**
 
-
 ## Supported tags and respective Dockerfile links
 
   - `:latest` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/master/postgres/Dockerfile) - PostgreSQL: **9.6**
@@ -21,10 +20,10 @@ your non-related EEA projects.
 
 ### Stable and immutable tags
 
-  - `:11.10-3.6` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/11.10-3.6/postgres/Dockerfile) - PostgreSQL: **11.10** Release: **3.6**
-  - `:10.14-3.6` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/10.14-3.6/postgres/Dockerfile) - PostgreSQL: **10.14** Release: **3.6**
-  - `:9.6-3.6` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.6-3.6/postgres/Dockerfile) - PostgreSQL: **9.6.20** Release: **3.6**
-  - `:9.5-3.6` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.5-3.6/postgres/Dockerfile) - PostgreSQL: **9.5.24** Release: **3.6**
+  - `:11.16-4.1` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/11.16-4.1/postgres/Dockerfile) - PostgreSQL: **11.16** Release: **4.1**
+  - `:10.21-4.1` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/10.21-4.1/postgres/Dockerfile) - PostgreSQL: **10.21** Release: **4.1**
+  - `:9.6.24-4.1` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.6.24-4.1/postgres/Dockerfile) - PostgreSQL: **9.6.24** Release: **4.1**
+  - `:9.5-3.7` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.5-3.7/postgres/Dockerfile) - PostgreSQL: **9.5.25** Release: **3.7**
 
 See [older versions](https://github.com/eea/eea.docker.postgres/releases)
 

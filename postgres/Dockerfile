@@ -7,7 +7,10 @@ ENV PG_ARCHIVE=/var/lib/postgresql/archive \
     PG_BACKUP=/postgresql.backup
 
 
-RUN apt-get update -q \
+RUN rm -f /etc/apt/sources.list.d/pgdg.list \
+ && apt-get update -q \
+ && apt-get -y install apt-transport-https \
+ && printf "deb http://apt-archive.postgresql.org/pub/repos/apt/ stretch-pgdg main" > /etc/apt/sources.list.d/pgdg.list \
  && apt-get install -y --no-install-recommends python3 iputils-ping\
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* \
