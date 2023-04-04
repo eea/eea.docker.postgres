@@ -1,5 +1,9 @@
 # Changelog
 
+@@ 2023-04-04 (Release 3.7)
+
+- Upgrade to 9.5.25
+
 @@ 2020-11-13 (Release 3.6)
 
 - Upgrade to 9.5.24, upgrade OS to stretch
