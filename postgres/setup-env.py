@@ -15,7 +15,13 @@ if not os.path.isfile(zenv_conf):
             configuration.append(value)
             continue
 
-        if not variable.startswith("POSTGRES_CONFIG_"):
+        if variable == 'RECOVERY_CONFIG':
+            value = os.environ[variable]
+            configuration.append(value)
+            continue
+
+
+        if not variable.startswith("POSTGRES_CONFIG_") and not variable.startswith("RECOVERY_CONFIG_"):
             continue
 
         tag = variable[16:]
@@ -32,32 +38,3 @@ if not os.path.isfile(zenv_conf):
         with open(zenv_conf, "w") as conf:
             conf.write(configuration)
 
-#
-# Setup recovery.conf for replication
-#
-recovery_conf = os.path.join(PGDATA, "recovery.conf")
-recovery_done =  os.path.join(PGDATA, "recovery.done")
-if not (os.path.isfile(recovery_conf) or os.path.isfile(recovery_done)):
-    configuration = []
-    for variable in os.environ:
-        if variable == "RECOVERY_CONFIG":
-            value = os.environ[variable]
-            configuration.append(value)
-            continue
-
-        if not variable.startswith("RECOVERY_CONFIG_"):
-            continue
-
-        tag = variable[16:]
-        tag = tag.lower()
-        if not tag:
-            continue
-
-        value = os.environ[variable].strip('"\'')
-        configuration.append(u"%s = %s" % (tag, value))
-
-    if configuration:
-        configuration.append(u"")
-        configuration = u"\n".join(configuration)
-        with open(recovery_conf, "w") as conf:
-            conf.write(configuration)
