@@ -5,26 +5,19 @@ Docker image for PostgreSQL with replication support and ZODB RelStorage ready
 This image is generic, thus you can obviously re-use it within
 your non-related EEA projects.
 
- - Debian: **Stretch**
- - PostgreSQL: **11.16**
+ - Debian: **Buster**
+ - PostgreSQL: **14.7**
  - Expose: **5432**
 
 
 ## Supported tags and respective Dockerfile links
 
-  - `:latest` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/master/postgres/Dockerfile) - PostgreSQL: **9.6**
-  - `:11s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/11s/postgres/Dockerfile) - PostgreSQL: **11**
-  - `:10s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/10s/postgres/Dockerfile) - PostgreSQL: **10**
-  - `:9.6s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.6s/postgres/Dockerfile) - PostgreSQL: **9.6**
-  - `:9.5s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.5s/postgres/Dockerfile) - PostgreSQL: **9.5**
+  - `:14s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/14s/postgres/Dockerfile) - PostgreSQL: **14**
 
 
 ### Stable and immutable tags
 
-  - `:11.16-4.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/11.16-4.0/postgres/Dockerfile) - PostgreSQL: **11.16** Release: **4.0**
-  - `:10.21-4.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/10.21-4.0/postgres/Dockerfile) - PostgreSQL: **10.21** Release: **4.0**
-  - `:9.6-4.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.6.24-4.0/postgres/Dockerfile) - PostgreSQL: **9.6.24** Release: **4.0**
-  - `:9.5-3.6` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.5-3.6/postgres/Dockerfile) - PostgreSQL: **9.5.24** Release: **3.6**
+  - `:14.7-1.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/14.7-1.0/postgres/Dockerfile) - PostgreSQL: **14.7** Release: **1.0**
 
 See [older versions](https://github.com/eea/eea.docker.postgres/releases)
 
