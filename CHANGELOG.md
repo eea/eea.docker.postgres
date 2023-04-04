@@ -1,5 +1,9 @@
 # Changelog
 
+## 2023-04-04 (Release 4.2)
+
+- Upgrade to Debian Buster
+
 ## 2022-09-09 (Release 4.0)
 
 - Upgrade to 9.6.24
