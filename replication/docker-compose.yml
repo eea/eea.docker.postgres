@@ -11,9 +11,8 @@ services:
     - POSTGRES_DBPASS=zope
     - POSTGRES_CONFIG_wal_level=replica
     - POSTGRES_CONFIG_max_wal_senders=8
-    - POSTGRES_CONFIG_wal_keep_segments=8
     - POSTGRES_CONFIG_hot_standby=on
-  volumes:
+    volumes:
     - master:/var/lib/postgresql/data
 
   replica:
@@ -21,16 +20,15 @@ services:
     tty: true
     stdin_open: true
     links:
-    - master:db-pg-master
+    - master:master
     environment:
     - POSTGRES_USER=postgres
     - POSTGRES_PASSWORD=postgres
     - POSTGRES_CONFIG_wal_level=replica
     - POSTGRES_CONFIG_max_wal_senders=8
-    - POSTGRES_CONFIG_wal_keep_segments=8
     - POSTGRES_CONFIG_hot_standby=on
-    - POSTGRES_REPLICATE_FROM=db-pg-master
-  volumes:
+    - POSTGRES_REPLICATE_FROM=master
+    volumes:
     - replica:/var/lib/postgresql/data
 
 volumes:

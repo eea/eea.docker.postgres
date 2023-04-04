@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+echo "Running setup-postgres ( include /postgresql.conf.d/*.conf)" 
+
 ## Also include /postgresql.conf.d/*.conf
 ##
 ALREADY_FIXED=$( grep postgresql.conf.d $PGDATA/postgresql.conf || true )

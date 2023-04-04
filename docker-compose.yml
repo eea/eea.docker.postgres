@@ -1,27 +1,8 @@
-<<<<<<< HEAD
-postgres:
-  image: eeacms/postgres
-  labels:
-    io.rancher.sidekicks: data
-  ports:
-  - "5432:5432"
-  volumes_from:
-  - data
-  volumes:
-  - /etc/localtime:/etc/localtime:ro
-  environment:
-    POSTGRES_USER: postgres
-    POSTGRES_PASSWORD: postgres
-    POSTGRES_DBNAME: datafs zasync
-    POSTGRES_DBUSER: zope
-    POSTGRES_DBPASS: zope
-=======
 version: "3"
->>>>>>> c636968 (fix(default.conf): and apply more RelStorage tunning - refs #148213)
 
 services:
   postgres:
-    image: eeacms/postgres:11s
+    image: eeacms/postgres:13s
     ports:
     - "5432:5432"
     environment:
