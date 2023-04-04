@@ -2,7 +2,7 @@ version: "3"
 
 services:
   postgres:
-    image: eeacms/postgres:11s
+    image: eeacms/postgres:14s
     ports:
     - "5432:5432"
     environment:

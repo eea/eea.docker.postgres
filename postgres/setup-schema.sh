@@ -1,6 +1,7 @@
 #!/bin/bash
 set -x
 
+echo "Running setup schema" 
 INITDB="yes"
 
 if [ -z "$POSTGRES_DBNAME" ]; then
