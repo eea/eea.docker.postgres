@@ -1,5 +1,9 @@
 # Changelog
 
+## 2023-11-17 (Release 4.2)
+
+- Upgrade to 11.22
+
 ## 2023-04-04 (Release 4.1)
 
 - Upgrade to 11.19
