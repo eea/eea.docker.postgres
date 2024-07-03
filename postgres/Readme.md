@@ -24,7 +24,7 @@ your non-related EEA projects.
 
 ### Stable and immutable tags
 
-  - `:14.12-1.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/14.12-1.0/postgres/Dockerfile) - PostgreSQL: **14.12** Release: **1.0**
+  - `:14.12-2.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/14.12-2.0/postgres/Dockerfile) - PostgreSQL: **14.12** Release: **2.0**
   - `:14.7-1.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/14.7-1.0/postgres/Dockerfile) - PostgreSQL: **14.7** Release: **1.0**
   - `:13.10-1.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/13.10-1.0/postgres/Dockerfile) - PostgreSQL: **13.10** Release: **1.0**
   - `:12.14-1.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/12.14-1.0/postgres/Dockerfile) - PostgreSQL: **12.14** Release: **1.0**
