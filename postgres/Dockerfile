@@ -4,7 +4,7 @@
 # PLEASE DO NOT EDIT IT DIRECTLY.
 #
 
-FROM debian:buster-slim
+FROM debian:bookworm-slim
 
 RUN set -ex; \
 	if ! command -v gpg > /dev/null; then \
@@ -84,10 +84,10 @@ RUN set -ex; \
 	command -v gpgconf > /dev/null && gpgconf --kill all; \
 	rm -rf "$GNUPGHOME"
 
-ENV PG_MAJOR 14
+ENV PG_MAJOR 16
 ENV PATH $PATH:/usr/lib/postgresql/$PG_MAJOR/bin
 
-ENV PG_VERSION 14.7-1.pgdg110+1
+ENV PG_VERSION 16.3-1.pgdg110+1
 
 RUN set -ex; \
 	\
@@ -95,7 +95,7 @@ RUN set -ex; \
 	export PYTHONDONTWRITEBYTECODE=1; \
 	\
 	dpkgArch="$(dpkg --print-architecture)"; \
-	aptRepo="[ signed-by=/usr/local/share/keyrings/postgres.gpg.asc ] http://apt.postgresql.org/pub/repos/apt/ buster-pgdg main $PG_MAJOR"; \
+	aptRepo="[ signed-by=/usr/local/share/keyrings/postgres.gpg.asc ] http://apt.postgresql.org/pub/repos/apt/ bookworm-pgdg main $PG_MAJOR"; \
 	case "$dpkgArch" in \
 		amd64 | arm64 | ppc64el) \
 # arches officialy built by upstream
