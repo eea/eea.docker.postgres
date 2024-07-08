@@ -1,6 +1,6 @@
 # Changelog
 
-## 2024-06-01 (Release 2.0)
+## 2024-07-08 (Release 2.0)
 
 - Upgrade to 13.15
 - Upgrade to OS Bookworm
