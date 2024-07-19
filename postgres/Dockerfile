@@ -1,6 +1,6 @@
 FROM postgres:14.12-bookworm
 
-MAINTAINER "EEA: IDM2 A-Team" <eea-edw-a-team-alerts@googlegroups.com>
+LABEL mantainer="EEA: IDM2 A-Team <eea-edw-a-team-alerts@googlegroups.com>"
 
 ENV PG_ARCHIVE=/var/lib/postgresql/archive \
     PG_CONFD=/postgresql.conf.d \
