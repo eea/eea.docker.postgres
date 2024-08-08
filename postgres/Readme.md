@@ -6,7 +6,7 @@ This image is generic, thus you can obviously re-use it within
 your non-related EEA projects.
 
  - Debian: **Buster**
- - PostgreSQL: **12.14**
+ - PostgreSQL: **12.19**
  - Expose: **5432**
 
 
