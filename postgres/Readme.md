@@ -17,6 +17,7 @@ your non-related EEA projects.
   - `:15s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/15s/postgres/Dockerfile) - PostgreSQL: **15**
   - `:14s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/14s/postgres/Dockerfile) - PostgreSQL: **14**
   - `:13s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/13s/postgres/Dockerfile) - PostgreSQL: **13**
+  - `:12.19-2.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/12.19-2.0/postgres/Dockerfile) - PostgreSQL: **12.19** Release: **2.0**
   - `:12s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/12s/postgres/Dockerfile) - PostgreSQL: **12**
   - `:11s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/11s/postgres/Dockerfile) - PostgreSQL: **11**
   - `:10s` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/10s/postgres/Dockerfile) - PostgreSQL: **10**
