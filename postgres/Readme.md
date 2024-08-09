@@ -5,7 +5,9 @@ Docker image for PostgreSQL with replication support and ZODB RelStorage ready
 This image is generic, thus you can obviously re-use it within
 your non-related EEA projects.
 
- - Debian: **Buster**
+
+ - Debian: **Bullseye**
+
  - PostgreSQL: **12.19**
  - Expose: **5432**
 
