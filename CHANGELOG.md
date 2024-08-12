@@ -3,7 +3,7 @@
 ## 2.0 (2024-07-08)
 
 - Upgrade to 13.15
-- Upgrade to OS Bookworm
+- Upgrade to OS Bullseye
 
 ## 1.0 (2023-04-04)
 
