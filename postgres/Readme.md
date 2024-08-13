@@ -6,7 +6,7 @@ This image is generic, thus you can obviously re-use it within
 your non-related EEA projects.
 
  - Debian: **Bullseye**
- - PostgreSQL: **16.3**
+ - PostgreSQL: **16.4**
  - Expose: **5432**
 
 
@@ -26,11 +26,11 @@ your non-related EEA projects.
 
 ### Stable and immutable tags
 
-  - `:16.3-1.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/16.3-1.0/postgres/Dockerfile) - PostgreSQL: **16.3** Release: **1.0**
-  - `:15.7-1.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/15.7-1.0/postgres/Dockerfile) - PostgreSQL: **15.7** Release: **1.0**
-  - `:14.12-2.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/14.12-2.0/postgres/Dockerfile) - PostgreSQL: **14.12** Release: **2.0**
-  - `:13.15-2.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/13.15-2.0/postgres/Dockerfile) - PostgreSQL: **13.15** Release: **2.0**
-  - `:12.19-2.0` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/12.19-2.0/postgres/Dockerfile) - PostgreSQL: **12.19** Release: **2.0**
+  - `:16.4-1.1` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/16.4-1.1/postgres/Dockerfile) - PostgreSQL: **16.4** Release: **1.1**
+  - `:15.8-1.1` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/15.8-1.1/postgres/Dockerfile) - PostgreSQL: **15.8** Release: **1.1**
+  - `:14.13-2.1` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/14.13-2.1/postgres/Dockerfile) - PostgreSQL: **14.13** Release: **2.1**
+  - `:13.16-2.1` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/13.16-2.1/postgres/Dockerfile) - PostgreSQL: **13.16** Release: **2.1**
+  - `:12.20-2.1` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/12.20-2.1/postgres/Dockerfile) - PostgreSQL: **12.20** Release: **2.1**
   - `:11.19-4.1` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/11.19-4.1/postgres/Dockerfile) - PostgreSQL: **11.19** Release: **4.1**
   - `:10.23-4.2` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/10.23-4.2/postgres/Dockerfile) - PostgreSQL: **10.23** Release: **4.2**
   - `:9.6-4.2` [*Dockerfile*](https://github.com/eea/eea.docker.postgres/blob/9.6.24-4.2/postgres/Dockerfile) - PostgreSQL: **9.6.24** Release: **4.2**
