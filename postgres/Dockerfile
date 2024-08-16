@@ -1,4 +1,4 @@
-FROM postgres:12.19-bullseye
+FROM postgres:12.20-bullseye
 
 LABEL maintainer="EEA: IDM2 A-Team <eea-edw-a-team-alerts@googlegroups.com>"
 
