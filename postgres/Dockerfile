@@ -1,4 +1,4 @@
-FROM postgres:17.5-bullseye
+FROM postgres:17.11-trixie
 
 
 LABEL maintainer="EEA: IDM2 A-Team <eea-edw-a-team-alerts@googlegroups.com>"
