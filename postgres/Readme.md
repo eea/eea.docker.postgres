@@ -6,7 +6,7 @@ This image is generic, thus you can obviously re-use it within
 your non-related EEA projects.
 
  - Debian: **Trixie**
- - PostgreSQL: **14.24**
+ - PostgreSQL: **14.25**
  - Expose: **5432**
 
 
@@ -230,6 +230,18 @@ In the same way you can define maintenance cron jobs by using
 or restore Staging DB daily at 5 AM:
 
     POSTGRES_CRON_2=0 5 * * * postgres /postgresql.restore/database-restore.sh datafs
+
+## Tests
+
+Functional tests start throw-away containers and check that the server starts,
+that configuration from environment variables is applied (`POSTGRES_CONFIG*`,
+`POSTGRES_DB*`, `POSTGRES_CRON_*`, `POSTGRES_REPLICATION_NETWORK`), that the
+backup/restore scripts work, and that streaming replication works:
+
+    $ docker build -t eeacms/postgres:test postgres/
+    $ tests/run.sh eeacms/postgres:test <major-version>
+
+Set `KEEP_CONTAINERS=1` to keep the containers for debugging when a test fails.
 
 ## Troubleshooting
 
