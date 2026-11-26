@@ -3,21 +3,21 @@ set -e
 
 # Provide POSTGRES_CRON_* via environment variable
 rm -rf /etc/cron.d/postgres /etc/environment
-for item in `env`; do
-   case "$item" in
-       POSTGRES_CRON*)
-            ENVVAR=`echo $item | cut -d \= -f 1`
-            printenv $ENVVAR >> /etc/cron.d/postgres
-            ;;
-   esac
-   case "$item" in
-       PG*)
-            echo "$item" >> /etc/environment
+# Iterate over variable names (not `env` output) so values containing
+# spaces or '*' are neither split nor glob-expanded.
+for ENVVAR in $(compgen -e); do
+    case "$ENVVAR" in
+        POSTGRES_CRON*)
+            printenv "$ENVVAR" >> /etc/cron.d/postgres
             ;;
     esac
-    case "$item" in
-        POSTGRES_*)
-            echo "$item" >> /etc/environment
+    case "$ENVVAR" in
+        PG*|POSTGRES_*)
+            VALUE="${!ENVVAR}"
+            # /etc/environment is line based: skip multi-line values
+            if [[ "$VALUE" != *$'\n'* ]]; then
+                echo "$ENVVAR=$VALUE" >> /etc/environment
+            fi
             ;;
     esac
 done
