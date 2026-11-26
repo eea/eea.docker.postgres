@@ -1,4 +1,4 @@
-FROM postgres:17.11-trixie
+FROM postgres:17.12-trixie
 
 
 LABEL maintainer="EEA: IDM2 A-Team <eea-edw-a-team-alerts@googlegroups.com>"
@@ -17,6 +17,7 @@ COPY default.conf /postgresql.conf.d/
 RUN apt-get update -q \
  && apt-get install -y --no-install-recommends python3 iputils-ping cron\
  && apt-get clean \
+ && rm -f /etc/cron.daily/apt-compat /etc/cron.daily/dpkg /etc/cron.d/e2scrub_all \
  && mkdir -p $PG_ARCHIVE $PG_CONFD $PG_RESTORE $PG_BACKUP \
  && chown -R postgres:postgres $PG_ARCHIVE $PG_CONFD $PG_RESTORE $PG_BACKUP \
  && ln -s /usr/local/bin/entrypoint.sh / 
